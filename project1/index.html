@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="html-project1">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/mySite.css" />
+  </head>
+
+  <body class="body-project1">
+    <div class="full-wrappingTest">
+    
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html" class="home-link">
+                <img
+                  src="images/mychilla.png"
+                  title="This is Jinnie."
+                  alt="home"
+                  class="home-icon"
+                />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Hero -->
+      <section id="hero">
+        <div class="inner">
+          <h1 class="welcome">This is me</h1>
+        </div>
+      </section>
+
+    
+      <main class="main-container">
+       
+        <div class="left-container">
+          <section id="projects">
+            <h2>   I make stuff</h2>
+            <p style="color: #e0ffe5; margin-top: 10px;">
+           
+            </p>
+
+            <div style="margin-top: 20px;">
+              <a
+                href="https://disla.itch.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link-button"
+              >
+                My Itch.io page
+              </a>
+            </div>
+          </section>
+        </div>
+
+   
+        <div class="right-container">
+          <section id="content-me" class="profile-section">
+            <img
+              src="images/guitarmepic.jpg"
+              alt="Disla"
+              class="profile-pic"
+            />
+            <h1 class="name">Disla</h1>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- Background movement script -->
+    <script>
+      document.body.addEventListener("mousemove", (e) => {
+        const thisX = e.clientX / window.innerWidth;
+        const thisY = e.clientY / window.innerHeight;
+        const placementX = thisX * 30;
+        const placementY = thisY * 30;
+        document.body.style.backgroundPosition = `${placementX}px ${placementY}px`;
+      });
+    </script>
+  </body>
+</html>

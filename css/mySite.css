@@ -1,0 +1,619 @@
+
+    /*-----------------PROJECT 1------------------------------*/
+    /* Styles.CSS */
+.html-project1,
+.body-project1 {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  flex-direction: column; /*added */
+}
+
+.full-wrappingTest {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-project1 {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100vh;
+  /*dots*/
+   background-color: #0a0a0a;
+    background-image:
+        linear-gradient(80deg, #0a0a0a 0%, #05b30e 25%, #1d5308 50%, #00c531 75%, #fffefe 45%),
+        linear-gradient(70deg, #0a0a0a 45%, #bea282 20%, #65b300 50%, #c29889 80%, #0a0a0a 100%),
+        radial-gradient(circle at center, rgba(255,140,0,0.1) 0%, transparent 70%);
+    
+    background-blend-mode: overlay;
+    color: #e0ffe5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  transition: background-position 0.1s ease;
+}
+
+/* I saw this one online. did fix some overflow when window minimized. only solution? */
+@media (max-width: 800px) {
+  .main-container {
+    display: flex !important; /*change grid to flex? direction top to bottom. !important worked */
+    flex-direction: column;
+    padding: 25px; /*50, 20, 35 */
+  }
+
+  .right-container {
+    order: -1; /* this should move profile on top. dont touch*/
+  }
+}
+/* STYLES.CSS END*/
+    /*NAVIGATION.CSS */
+/* front and top of page */
+header,
+footer {
+  background-color: #030101;
+  color: #fff;
+  padding: 9px 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* navigation boxes*/
+.home-icon {
+  background-color: #000000;
+  width: 80px;
+  height: 70px; /* keep it square */
+  object-fit: contain;
+  vertical-align: middle; /*align in middle?*/
+  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+  /*experiment with keyframes? */
+}
+
+.home-link:hover .home-icon {
+  transform: scale(1.25) rotate(2deg);
+  opacity: 0.9;
+  filter: brightness(1.3) hue-rotate(10deg) drop-shadow(0 0 5px #6affa3); /*this brightens pic and adds a shadow. anything more than 1.4 does not look good. 1.2 as baseline */
+  border-radius: 9px;
+  cursor: pointer; /*just in case. check redundancy */
+}
+
+/* text under image footer */
+.home-link span {
+  display: block;
+  text-align: center;
+  margin-top: 6px;
+  font-size: 13px;
+  font-family: 'Orbitron', sans-serif; /*root next time */
+  color: #6affa3; 
+  text-shadow: 0 0 4px #000; 
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/*
+.home-link:hover span {
+  transform: scale(1.09);
+  color: white;
+}
+*/
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  gap: 15px;
+}
+
+nav ul li:first-child {
+  margin-right: auto;
+  padding-left: 20px;
+}
+
+nav ul li:not(:first-child) {
+  padding-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  transform: scale(1.2);
+  padding: 5px 15px;
+  background-color: #6affa380;
+  border-radius: 4px;
+}
+
+/*override the original above for home-link */
+nav ul li a.home-link:hover {
+  background-color: transparent;
+  padding: 8px 12px;
+  transform: scale(1.2);
+}
+
+/* welcome to my webpage */
+#hero {
+  background-color: #6affa380;
+  color: #020202;
+  padding: 5px 20px;
+  text-align: center;
+  border-bottom: 1.2px solid #000000;
+}
+
+#hero h1.welcome {
+  font-size: 20px;
+  font-family: "Orbitron", sans-serif;
+  margin: 0;
+  line-height: 1.2;
+  /*something slow. around .8-.20 */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.9s ease, text-shadow 1s ease;
+}
+#hero h1.welcome:hover {
+  /*no more than 1.2 */
+  transform: scale(1.01);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+#hero-schedule {
+  background-color: #6affa380;
+  color: #020202;
+  padding: 5px 20px;
+  text-align: center;
+  border-bottom: 1.2px solid #000000;
+}
+
+#hero-schedule h1.welcome {
+  font-size: 20px;
+  font-family: "Orbitron", sans-serif;
+  margin: 0;
+  line-height: 1.2;
+  /*something slow. around .8-.20 */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.9s ease, text-shadow 1s ease;
+}
+#hero-schedule h1.welcome:hover {
+  /*no more than 1.2 */
+  transform: scale(1.01);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+/*NAVIGATION.CSS END */
+/*CONTAINERS.CSS */
+/* this controls left and right; central */
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 40px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  flex: 1;
+}
+
+/* two things they share */
+.left-container,
+.right-container {
+  padding: 20px;
+  box-sizing: border-box;
+  /* hide any content that goes over. fix for profile?*/
+  overflow: hidden;
+}
+
+/* left container h2 */
+.left-container h2 {
+  margin-top: 0;
+  padding-left: 20px;
+  color: #6affa380;
+  font-family: "Orbitron", sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  /*dont go back and motify below */
+  text-shadow: 0 0 30px rgba(106, 255, 163, 0.7),
+    /*10 px, 30, 40. central*/ 45px 10px 30px rgba(58, 187, 108, 0.5); /*30 px, 35, 40. trail/flare ish */
+}
+
+/* left container p */
+.left-container p {
+  color: #e0ffe5;
+}
+
+/* shared section */
+/* color is only for right-container, left is overwritten. keep transparent? */
+.left-container section,
+.right-container section {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /*right background. don't touch these values, final look*/
+  backdrop-filter: blur(2px); /* blurs the section for right */
+  border: 1px solid #6affa380;
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
+  /*overflow: visible; /*test this compared to h2 glow */
+  overflow: hidden; /*hidden final decision */
+}
+
+/* overwritten and extra changes, box background? */
+.left-container section {
+  background-color: #000000; /* main color */
+  border: 1px solid #6affa380; /* do color as hero? keep. */
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 100, 0.02) 0px,
+      rgba(0, 255, 100, 0.02) 1px,
+      transparent 1px,
+      /*keep the same values below. uniformity */ transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 100, 0.02) 0px,
+      rgba(0, 255, 100, 0.02) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  backdrop-filter: none; /*just in case */
+  overflow: visible; /*for pictures */
+}
+
+/* Hover animation for the hobbies. mess with opacity, transform */
+#hobbies:hover .hidden-images,
+#hobbies .hidden-images:hover {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.image-hover-container {
+  position: relative; /*test*/
+}
+
+#hobbies .hidden-images {
+  opacity: 0;
+  transform: translateY(20px); /* 20px worked */
+  transition: opacity 0.4s ease, transform 0.4s ease; /* do not change. final decision */
+  pointer-events: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /*lower jitter maybe with space? */
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: #000; /* keep? */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Thumbnail, add cursor */
+#hobbies .hidden-images img {
+  width: 100px;
+  max-width: 300px;
+  height: auto;
+  border-radius: 15px;
+  margin: 0 10px 10px;
+  opacity: 0.7;
+  cursor: auto;
+  transform-origin: center center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 100, 0.3);
+  display: block;
+  z-index: 1;
+}
+
+#hobbies .hidden-images img:hover {
+  opacity: 1 !important;
+  transform: scale(2.88); /* around 3 inches */
+  max-width: 3in; /* hard limit; test */
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 186, 71, 0.6);
+  z-index: 10;
+}
+
+#hobbies .hidden-images img:not(:hover) {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+/* hides image.
+} check for jitter...0.3/0.2... check optimal num */
+#hobbies .hidden-images img:hover ~ img {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+/*add helper text */
+#hobbies .hover-text {
+  flex-basis: 100%;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.link-index {
+  display: inline;
+  white-space: normal;
+  line-height: 1;
+}
+
+.link-index a {
+  color: #6affa380;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  display: inline-block;
+  transform-origin: center;
+  border-radius: 6px;
+  overflow: visible;
+  will-change: transform;
+  margin-left: -20px; /* fixes layout issue */
+}
+
+.link-index a:hover {
+  color: #6affa3;
+  text-shadow: 0 0 5px #6affa3, 0 0 10px #6affa3;
+  transform: scale(1.5); /* 150%*/
+  background-color: rgb(0, 0, 0);
+  overflow: visible;
+}
+/*CONTAINERS.CSS END */
+/*PROFILE.CSS */
+/* profile right section */
+/* id: content-me */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* overwritten? check container.css */
+  background-color: #000000;
+  /*copy to left-section for uniform */
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 100, 0.02) 0px,
+      rgba(0, 255, 100, 0.02) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 100, 0.02) 0px,
+      rgba(0, 255, 100, 0.02) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  /*end of background image change */
+  border: 1px solid #389638;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden; /* fixes overflow with the glow issue... */
+}
+
+.profile-pic {
+  width: 288px; /* max 3 inches wide. value 300? */
+  height: 288px; /*  a square */
+  border-radius: 50%; /* circle */
+  object-fit: cover; /* fill circle */
+  margin-bottom: 20px;
+  box-shadow: 0 0 50px #ffffff9a, 0 0 150px 20px #00ff6e5d;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name {
+  color: #6affa380;
+  font-family: "Orbitron", sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(106, 255, 163, 0.5);
+  text-align: center;
+}
+
+
+
+
+.caption {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-bottom: 1px solid #3a3a3a;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
+}
+tbody tr:nth-child(even) td {
+  background-color: #104040;
+}
+
+tbody tr:nth-child(odd) td {
+  background-color: #0c3535;
+}
+
+tbody tr:hover td {
+  background-color: #146b4d !important;
+  box-shadow: 0 0 20px #39ffbc88;
+  transition: 0.2s ease-in-out;
+}
+
+
+
+#hero {
+  padding: 6px 20px;          
+  background-color: #6affa380;
+  border-bottom: 1px solid #000;
+}
+
+#hero h1.welcome {
+  font-size: 18px;           
+  margin: 0;
+  text-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+
+.main-container {
+  display: flex;           
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: stretch;     
+}
+
+.left-container,
+.right-container {
+  flex: 1 1 45%;             
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.left-container section,
+.right-container section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.profile-section {
+  justify-content: center;
+}
+
+
+.project-link-button {
+  display: block;
+  width: 80%;
+  margin: 20px auto 10px;
+  padding: 14px 20px;
+  background-color: #6affa380;
+  color: #000;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 1px solid #6affa3;
+  transition: all 0.3s ease;
+}
+
+.project-link-button:hover {
+  background-color: #6affa3;
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #6affa3;
+}
+
+
+@media (max-width: 800px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .left-container,
+  .right-container {
+    flex: 1 1 100%;
+  }
+  .right-container {
+    order: -1;   
+  }
+}
+
+/* Override the main container to be a centered column */
+.main-container {
+  display: flex !important;
+  flex-direction: column !important;    /* stack vertically */
+  align-items: center !important;       /* center horizontally */
+  justify-content: center !important;   
+  gap: 30px !important;                /* space between the two cards */
+  padding: 20px !important;
+  margin: 0 auto !important;
+  max-width: 600px !important;         
+  width: 100%;
+  flex: 1;
+  background: transparent !important;
+  border-top: none !important;
+}
+
+/* Make both containers take full width, but let the cards inside limit size */
+.left-container,
+.right-container {
+  flex: 0 1 auto !important;           
+  width: 100% !important;
+  padding: 0 !important;              
+  border-right: none !important;
+  overflow: visible !important;
+}
+
+.right-container {
+  order: -1 !important;
+}
+
+
+.left-container {
+  border-bottom: 1px solid #6affa3;  
+  padding-bottom: 30px !important;
+}
+
+
+.left-container section,
+.right-container section {
+  max-width: 100% !important;
+  margin: 0 !important;               
+  width: 100% !important;
+}
+
+
+
+.project-link-button {
+  display: block;
+  width: 80%;
+  margin: 20px auto 10px;
+  padding: 14px 20px;
+  background-color: #6affa3;
+  color: #000;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 1px solid #6affa3;
+  transition: all 0.3s ease;
+}
+
+.project-link-button:hover {
+  background-color: #4dcc7a;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #6affa3;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .main-container {
+    padding: 15px !important;
+    gap: 20px !important;
+  }
+  .left-container {
+    border-bottom: 1px solid #6affa3;
+    padding-bottom: 20px !important;
+  }
+}
