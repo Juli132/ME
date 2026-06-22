@@ -12,8 +12,6 @@
   font-family: "Orbitron", sans-serif;
   color: white;
   flex-direction: column; /*added */
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 .full-wrappingTest {
@@ -608,38 +606,3 @@ tbody tr:hover td {
   box-shadow: 0 0 20px #6affa3;
 }
 
-/* CONSOLIDATED MOBILE LAYOUT */
-@media (max-width: 800px) {
-  .main-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 15px !important;
-    gap: 20px !important;
-    margin: 0 auto !important;
-    max-width: 600px !important;
-    background: transparent !important;
-    border-top: none !important;
-  }
-
-  .left-container,
-  .right-container {
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    padding: 0 !important;
-    border-right: none !important;
-    overflow: visible !important;
-  }
-
-  /* Moves the profile card to the top */
-  .right-container {
-    order: -1 !important; 
-  }
-
-  /* Adds a divider between profile and projects */
-  .left-container {
-    border-bottom: 1px solid #6affa3;
-    padding-bottom: 20px !important;
-  }
-}
