@@ -1,6 +1,7 @@
 
     /*-----------------PROJECT 1------------------------------*/
     /* Styles.CSS */
+    
 .html-project1,
 .body-project1 {
   width: 100%;
@@ -18,6 +19,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+    overflow-x: hidden;
 }
 
 .body-project1 {
@@ -25,31 +27,97 @@
   flex: 1;
   flex-direction: column;
   min-height: 100vh;
-  /*dots*/
-   background-color: #0a0a0a;
-    background-image:
-        linear-gradient(80deg, #0a0a0a 0%, #05b30e 25%, #1d5308 50%, #00c531 75%, #fffefe 45%),
-        linear-gradient(70deg, #0a0a0a 45%, #bea282 20%, #65b300 50%, #c29889 80%, #0a0a0a 100%),
-        radial-gradient(circle at center, rgba(255,140,0,0.1) 0%, transparent 70%);
-    
-    background-blend-mode: overlay;
-    color: #e0ffe5;
-    min-height: 100vh;
-    overflow-x: hidden;
-  transition: background-position 0.1s ease;
+  overflow-x: hidden;
+  color: #e0ffe5;
+  
+  /* The Base Void Color */
+  background-color: #010000;
+
+  /* Initialize CSS Variables for the JS to talk to */
+  --mouseX: 0;
+  --mouseY: 0;
+
+  
+  position: relative;
+  z-index: 1; 
 }
 
-/* I saw this one online. did fix some overflow when window minimized. only solution? */
-@media (max-width: 800px) {
-  .main-container {
-    display: flex !important; /*change grid to flex? direction top to bottom. !important worked */
-    flex-direction: column;
-    padding: 25px; /*50, 20, 35 */
-  }
 
-  .right-container {
-    order: -1; /* this should move profile on top. dont touch*/
-  }
+.body-project1::before,
+.body-project1::after {
+  content: "";
+  position: fixed;
+  top: -5vh; 
+  left: -5vw;
+  width: 110vw; 
+  height: 110vh;
+  pointer-events: none; 
+  transition: transform 0.15s ease-out;
+}
+
+
+.body-project1::before {
+  z-index: -2; /* Deepest layer */
+  animation: orbitStars 40s linear infinite;
+  
+  background-image: 
+    /* White Stars */
+    radial-gradient(circle at 10% 15%, #ffffff 0.5px, transparent 0.5px),
+    radial-gradient(circle at 80% 20%, #ffffff 0.7px, transparent 0.7px),
+    radial-gradient(circle at 40% 90%, #ffffff 0.6px, transparent 0.6px),
+    radial-gradient(circle at 95% 10%, #ffffff 0.8px, transparent 0.8px),
+    radial-gradient(circle at 50% 60%, #ffffff 0.5px, transparent 0.5px),
+    radial-gradient(circle at 10% 85%, #ffffff 0.7px, transparent 0.7px),
+    radial-gradient(circle at 85% 85%, #ffffff 0.6px, transparent 0.6px),
+    radial-gradient(circle at 25% 8%, #ffffff 0.9px, transparent 0.9px),
+
+    /* Gold Stars */
+    radial-gradient(circle at 5% 40%, #ffd700 0.6px, transparent 0.6px),
+    radial-gradient(circle at 60% 30%, #f0a030 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 40%, #ffcc44 0.8px, transparent 0.8px),
+    radial-gradient(circle at 45% 15%, #e8a020 0.7px, transparent 0.7px),
+    radial-gradient(circle at 35% 50%, #ffb833 0.5px, transparent 0.5px),
+
+    /* Blue Stars */
+    radial-gradient(circle at 15% 70%, #aaddff 0.6px, transparent 0.6px),
+    radial-gradient(circle at 70% 80%, #88ccff 0.5px, transparent 0.5px),
+    radial-gradient(circle at 90% 50%, #99ddff 0.7px, transparent 0.7px),
+    radial-gradient(circle at 65% 65%, #77bbee 0.6px, transparent 0.6px),
+    radial-gradient(circle at 55% 95%, #88ccff 0.5px, transparent 0.5px),
+
+  
+    radial-gradient(circle at 30% 30%, #ffaacc 0.4px, transparent 0.4px),
+    radial-gradient(circle at 85% 70%, #ff8899 0.3px, transparent 0.3px);
+
+  transform: translate(calc(var(--mouseX) * -15px), calc(var(--mouseY) * -15px));
+}
+
+
+.body-project1::after {
+  z-index: -1;
+  animation: orbitHole 20s linear infinite;
+  background-image: 
+    radial-gradient(ellipse at 18% 22%, rgba(255, 200, 100, 0.12) 0%, rgba(255, 80, 0, 0.06) 20%, transparent 45%),
+    radial-gradient(ellipse at 22% 18%, rgba(255, 150, 50, 0.05) 0%, rgba(200, 50, 0, 0.02) 25%, transparent 50%),
+    radial-gradient(circle at 20% 25%, 
+      #000000 0%,
+      #000000 3.5%,
+      
+       rgba(255, 230, 180, 0.2) 5%, 
+          rgba(255, 64, 30, 0.25) 7.5%,
+         rgba(200, 50, 0, 0.12) 12%,
+      rgba(100, 10, 0, 0.05) 18%,
+      transparent 25%
+    ),
+    radial-gradient(circle at 20% 25%, 
+      rgba(255, 100, 50, 0) 10%,
+      rgba(255, 60, 20, 0.03) 30%,
+      rgba(100, 20, 0, 0.01) 50%,
+      transparent 70%
+    );
+
+  
+  transform: translate(calc(var(--mouseX) * -45px), calc(var(--mouseY) * -45px));
 }
 /* STYLES.CSS END*/
     /*NAVIGATION.CSS */
@@ -143,8 +211,8 @@ nav ul li a.home-link:hover {
 
 /* welcome to my webpage */
 #hero {
-  background-color: #6affa380;
-  color: #020202;
+  background-color: #e7dcdc34;
+  color: #d6c7c7;
   padding: 5px 20px;
   text-align: center;
   border-bottom: 1.2px solid #000000;
@@ -165,28 +233,7 @@ nav ul li a.home-link:hover {
   text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
-#hero-schedule {
-  background-color: #6affa380;
-  color: #020202;
-  padding: 5px 20px;
-  text-align: center;
-  border-bottom: 1.2px solid #000000;
-}
 
-#hero-schedule h1.welcome {
-  font-size: 20px;
-  font-family: "Orbitron", sans-serif;
-  margin: 0;
-  line-height: 1.2;
-  /*something slow. around .8-.20 */
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.9s ease, text-shadow 1s ease;
-}
-#hero-schedule h1.welcome:hover {
-  /*no more than 1.2 */
-  transform: scale(1.01);
-  text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-}
 /*NAVIGATION.CSS END */
 /*CONTAINERS.CSS */
 /* this controls left and right; central */
@@ -459,14 +506,14 @@ tbody tr:hover td {
 
 #hero {
   padding: 6px 20px;          
-  background-color: #6affa380;
-  border-bottom: 1px solid #000;
+  background-color: #00000065;
+  border-bottom: 1px solid #d4d2d227;
 }
 
 #hero h1.welcome {
   font-size: 18px;           
   margin: 0;
-  text-shadow: 0 0 8px rgba(0,0,0,0.2);
+  text-shadow: 0 0 8px rgba(252, 246, 246, 0.2);
 }
 
 
@@ -524,20 +571,7 @@ tbody tr:hover td {
 }
 
 
-@media (max-width: 800px) {
-  .main-container {
-    flex-direction: column;
-  }
-  .left-container,
-  .right-container {
-    flex: 1 1 100%;
-    width: 100%;
-  }
-  .right-container {
-    order: -1;   
-    width: 85%;
-  }
-}
+
 
 /* Override the main container to be a centered column */
 .main-container {
@@ -608,3 +642,169 @@ tbody tr:hover td {
   box-shadow: 0 0 20px #6affa3;
 }
 
+@media (max-width: 800px) {
+  
+  .main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important; 
+   
+    padding: 20px 0 !important; 
+    overflow-x: hidden !important;
+    
+  }
+
+ 
+  .right-container {
+    order: -1 !important; 
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .left-container {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .right-container section.profile-section {
+    width: 85% !important;    
+    margin: 0 auto !important;
+    padding: 20px !important; 
+    
+    box-sizing: border-box !important;
+  }
+
+  .profile-pic {
+    width: 160px !important;   
+    height: 160px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .left-container section {
+   
+    width: 85% !important; 
+    margin: 0 auto !important;
+   
+    box-sizing: border-box !important; 
+  }
+}
+
+
+@media (hover: none) and (pointer: coarse) {
+  
+ 
+ 
+
+  .link-stack {
+    margin-top: -5px !important;  
+  }
+
+  .project-link-button {
+    width: 90% !important;       
+    min-width: auto !important;
+    max-height: 60px !important;  
+    margin: 0 auto 10px !important; 
+    
+    
+    padding: 5px 20px 5px 5px !important; 
+    gap: 12px !important;
+  }
+
+  .project-link-button .button-text {
+    font-size: 0.9em !important; 
+  }
+
+  .button-icon {
+    width: 70px !important;       
+    height: 70px !important;
+    
+    
+    margin-left: 0 !important;    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+}
+
+
+
+/* --- THE WRAPPER --- */
+.link-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 20px;
+  width: 100%;
+  margin-top: 35px; 
+}
+
+
+.project-link-button {
+  display: inline-flex !important; 
+  align-items: center;
+  justify-content: flex-start; 
+  gap: 20px; 
+  
+  
+  width: fit-content;  
+  min-width: 280px;    
+  max-height: 85px !important; 
+  
+  margin: 0 auto; 
+  padding: 10px 40px 10px 15px; 
+  background-color: #6affa3;
+  color: #000;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 40px; 
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.project-link-button .button-text {
+  flex: none; 
+  text-align: center;
+}
+
+.project-link-button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 25px #6affa3;
+}
+
+/* --- THE ICON --- */
+.button-icon {
+ 
+  width: 100px;   
+  height: 100px;
+  
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-left: -20px;
+  transform: scale(1.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+}
+
+
+
+
+@keyframes orbitStars {
+  from { 
+    transform: translate(calc(var(--mouseX) * -15px), calc(var(--mouseY) * -15px)) rotate(0deg) translateX(10px) rotate(0deg); 
+  }
+  to { 
+    transform: translate(calc(var(--mouseX) * -15px), calc(var(--mouseY) * -15px)) rotate(360deg) translateX(10px) rotate(-360deg); 
+  }
+}
+
+@keyframes orbitHole {
+  from { 
+    transform: translate(calc(var(--mouseX) * -45px), calc(var(--mouseY) * -45px)) rotate(0deg) translateX(15px) rotate(0deg); 
+  }
+  to { 
+    transform: translate(calc(var(--mouseX) * -45px), calc(var(--mouseY) * -45px)) rotate(360deg) translateX(15px) rotate(-360deg); 
+  }
+}
