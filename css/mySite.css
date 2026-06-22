@@ -531,9 +531,11 @@ tbody tr:hover td {
   .left-container,
   .right-container {
     flex: 1 1 100%;
+    width: 100%;
   }
   .right-container {
     order: -1;   
+    width: 85%;
   }
 }
 
